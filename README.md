@@ -59,8 +59,8 @@ Each day introduces a new challenge—paired with hardware and code walkthroughs
 - 🛸 **Arduino IDE Download**: [arduino.cc/en/software](https://www.arduino.cc/en/software)
 - ⚡ **Fritzing Download (Circuit Design Tool)**: [fritzing.org/download](https://fritzing.org/download)
 - 📐 **Fritzing Schematics**:  
-  - [Day 1 Blink Circuit (.fz file)](https://github.com/YOUR_USERNAME/30DaysLostInSpace/tree/main/fritzing/day1_blink.fz)  
-  - [Day 2 Cabin Lights (.fz file)](https://github.com/YOUR_USERNAME/30DaysLostInSpace/tree/main/fritzing/day2_cabinlights.fz)  
+  - [Day 1 Blink Circuit (.fz file)](https://github.com/W17ant/30-Days-Lost-in-space/tree/main/fritzing/day1_blink.fz)  
+  - [Day 2 Cabin Lights (.fz file)](https://github.com/W17ant/30-Days-Lost-in-space/tree/main/fritzing/day2_cabinlights.fz)  
   - More coming soon!
 
 ---

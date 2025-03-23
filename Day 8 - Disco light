@@ -1,3 +1,27 @@
+/*
+====================================================
+🎉 DISCO PARTY MODE – Enhanced from Day 8 Mission
+====================================================
+
+📝 Key Differences from Day 8:
+1. 🌈 Rapid Color Cycling:
+   - Instead of slowly flashing one color (RED), this code **rapidly cycles** through a sequence of **7 colors**.
+   - Colors include: Red, Green, Blue, Yellow, Cyan, Magenta, White.
+
+2. ⚡ Fast-Paced Animation:
+   - Each color is displayed for **100ms**, creating a **disco strobe effect**.
+   - Day 8 used slower color changes for LED testing and gradual transitions.
+
+3. 🕹️ No Input Required:
+   - This code **loops endlessly** without external input or sensor readings.
+   - Day 8 focused on **basic RGB control and setup**, preparing for future missions.
+
+4. 🚀 Purpose:
+   - Day 8 was about **understanding RGB LEDs**.
+   - This code transforms that into **entertainment mode**, perfect for restoring **crew morale** (and sanity) during long repairs.
+====================================================
+*/
+
 #define RED_PIN 9
 #define GREEN_PIN 10
 #define BLUE_PIN 11

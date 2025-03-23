@@ -1,3 +1,31 @@
+/*
+====================================================
+🔧 Battery Simulation – Enhanced from Day 9 Mission
+====================================================
+
+📝 Key Differences from Day 9:
+1. 📈 Real Battery Charge Accumulation:
+   - Uses a photoresistor to **gradually accumulate charge** over time.
+   - Charge is stored in `battery_level` and mapped to 0–100% battery.
+
+2. 🌈 Custom LED Behavior:
+   - 0–25%: **Flashing Red Alert** (same as Day 9).
+   - 26–70%: **Amber Gradient** (Red fades 255→128, Green rises 0→128).
+   - 71–100%: **Green Gradient** (Red fades 128→0, Green rises 128→255).
+   - **Improved gradient** over Day 9’s fixed color zones.
+
+3. 🚨 Flash Bug Fix:
+   - Resolved **green flash glitch** around 25% using LED reset and safe mapping.
+   - All RGB values are **constrained to 0–255** to avoid illegal PWM outputs.
+
+4. ⚡ Fully Charged Message:
+   - Displays **“Battery Fully Charged”** once at 100% (like Day 9), but with enhanced flag logic.
+
+5. 💡 Code Modularity:
+   - Flash logic is now in a **separate function** (`flashRedAlert()`) for clarity and reuse.
+====================================================
+*/
+
 #define RED_PIN 11
 #define GREEN_PIN 10
 #define BLUE_PIN 9
@@ -27,8 +55,7 @@ void loop() {
 
   float percentage = ((float)battery_level / (float)BATTERY_CAPACITY) * 100;
 
-  // Always reset LED to OFF at start of each loop
-  displayColor(0, 0, 0);
+  displayColor(0, 0, 0);  // Reset LED OFF to prevent ghosting
 
   int redValue = 0;
   int greenValue = 0;
@@ -38,7 +65,7 @@ void loop() {
       redValue = 255;
       greenValue = 0;
 
-      flashRedAlert();  // Handles flashing red
+      flashRedAlert();  // Flashing red for low battery
 
       Serial.print("Battery CRITICAL: ");
     } else if (percentage > 25.0 && percentage <= 70.0) {
@@ -83,13 +110,13 @@ void loop() {
   }
 }
 
-// Flashing red function (isolated for clarity)
+// Flashing red function for clarity
 void flashRedAlert() {
   displayColor(0, 0, 0);  // OFF
   delay(100);
-  displayColor(255, 0, 0);  // RED
+  displayColor(255, 0, 0);  // RED ON
   delay(200);
-  displayColor(0, 0, 0);  // OFF again to prevent ghosting
+  displayColor(0, 0, 0);  // OFF again
   delay(100);
 }
 

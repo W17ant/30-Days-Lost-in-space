@@ -78,6 +78,6 @@ Each day introduces a new challenge—paired with hardware and code walkthroughs
 
 1. Download and install the [Arduino IDE](https://www.arduino.cc/en/software).
 2. Download [Fritzing](https://fritzing.org/download) for circuit visualization.
-3. Clone this repository to access the code and schematics.
+3. The Course Material [View the course at inventr.io](https://craftingtable.com/pages/launch).
 4. Follow the day-by-day instructions.
 5. Repair your ship. Escape the planet. Maybe become a legend.

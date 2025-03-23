@@ -71,4 +71,3 @@ Each day introduces a new challenge—paired with hardware and code walkthroughs
 4. Repair your ship. Escape the planet. Maybe become a legend.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/30DaysLostInSpace.git

@@ -54,6 +54,17 @@ Each day introduces a new challenge—paired with hardware and code walkthroughs
 
 ---
 
+## 🔗 Helpful Links
+
+- 🛸 **Arduino IDE Download**: [arduino.cc/en/software](https://www.arduino.cc/en/software)
+- ⚡ **Fritzing Download (Circuit Design Tool)**: [fritzing.org/download](https://fritzing.org/download)
+- 📐 **Fritzing Schematics**:  
+  - [Day 1 Blink Circuit (.fz file)](https://github.com/YOUR_USERNAME/30DaysLostInSpace/tree/main/fritzing/day1_blink.fz)  
+  - [Day 2 Cabin Lights (.fz file)](https://github.com/YOUR_USERNAME/30DaysLostInSpace/tree/main/fritzing/day2_cabinlights.fz)  
+  - More coming soon!
+
+---
+
 ## 🌌 Why This Course Rocks
 
 - **Hands-On Learning**: No boring theory—just practical, project-based exploration.
@@ -66,8 +77,7 @@ Each day introduces a new challenge—paired with hardware and code walkthroughs
 ## 🛸 How to Get Started
 
 1. Download and install the [Arduino IDE](https://www.arduino.cc/en/software).
-2. Clone this repository to access the code and scripts.
-3. Follow the day-by-day instructions.
-4. Repair your ship. Escape the planet. Maybe become a legend.
-
-```bash
+2. Download [Fritzing](https://fritzing.org/download) for circuit visualization.
+3. Clone this repository to access the code and schematics.
+4. Follow the day-by-day instructions.
+5. Repair your ship. Escape the planet. Maybe become a legend.

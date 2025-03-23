@@ -1,33 +1,30 @@
 /*
 ====================================================
 🛠️ Multi-Zone Light Control + Jingle System
+        🚀 Enhanced from Day 5 Mission
 ====================================================
 
 🎯 Purpose:
-- Control **3 separate ship lighting zones**: Cabin, Storage, Cockpit.
-- Each zone is tied to a **physical switch**.
-- Play unique **audio jingles** via a buzzer based on which switches are active.
-- Includes **combo jingles** for multiple switches and an **Easter Egg** melody.
+- Control **Cabin, Storage, and Cockpit lights** using physical switches.
+- Play **audio jingles** on a buzzer based on switch combos.
+- Includes an **Easter Egg** melody for extra fun.
 
-📝 Key Features & Differences from Day 9:
-1. 🔦 Expanded Hardware Control:
-   - Day 9 focused on RGB LED battery feedback.
-   - This code controls **multiple independent LEDs** and includes **input switches**.
+📝 Key Differences from Day 5:
+1. 🔊 Buzzer Integration:
+   - Day 5 used **only switches and LEDs**.
+   - This code adds a **buzzer** with **custom jingles** for each light zone.
 
-2. 🔊 Audio Feedback System:
-   - Plays **custom jingles** using a buzzer based on switch combos.
-   - Day 9 did **not include buzzer or audio output**.
+2. 🎹 Combo Detection:
+   - Detects **multiple switches ON** and plays **unique tunes**.
+   - Day 5 handled only **one light per switch** without combo logic.
 
-3. 🎹 Easter Egg Integration:
-   - Includes a **special jingle** (Rick Astley’s “Never Gonna Give You Up” intro) triggered by a **secret switch combo** (Storage ON only).
-   - No Easter Eggs were present in Day 9’s mission.
+3. 🐣 Easter Egg:
+   - Special melody plays when **only Storage switch** is ON.
+   - No Easter Egg logic in Day 5.
 
-4. 🧠 Smart Switch Detection:
-   - Detects **which and how many switches are ON** and responds accordingly.
-   - Dynamic system logic compared to Day 9’s linear LED response.
-
-5. 🚫 Bug Alert:
-   - Currently, the Easter Egg plays whenever only Storage is on, **even if in the 1-switch logic block**. Consider isolating this **after other logic** for smoother flow.
+4. 🧠 Advanced Logic:
+   - Uses **if-else trees** and **switch counting** for smart responses.
+   - Day 5 relied on **basic digitalRead and digitalWrite**.
 
 ====================================================
 */

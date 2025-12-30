@@ -5,7 +5,7 @@ You've crash-landed on an alien planet—your systems are fried, your ship's lig
 
 This repository contains code, circuit schematics, and mission details for the **30 Days Lost in Space** course—an immersive adventure in **Arduino coding** and **circuit building** for beginners and aspiring space engineers.
 
-![Ender 3 v2](https://inventr.io/wp-content/uploads/2023/03/30-Days-Lost-in-Space-Open-Box.png)
+![30 Days Lost in Space Kit](https://inventr.io/wp-content/uploads/2023/03/30-Days-Lost-in-Space-Open-Box.png)
 
 ## Table of Contents
 

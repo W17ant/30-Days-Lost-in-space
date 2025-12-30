@@ -5,6 +5,8 @@ You've crash-landed on an alien planet—your systems are fried, your ship's lig
 
 This repository contains code, circuit schematics, and mission details for the **30 Days Lost in Space** course—an immersive adventure in **Arduino coding** and **circuit building** for beginners and aspiring space engineers.
 
+![30 Days Lost in Space Kit](images/kit.webp)
+
 ## Table of Contents
 
 - [What You'll Learn](#what-youll-learn)

@@ -11,6 +11,7 @@ This repository contains code, circuit schematics, and mission details for the *
 
 - [What You'll Learn](#what-youll-learn)
 - [Kit Contents](#kit-contents)
+- [3D Printed Case](#3d-printed-case)
 - [Repository Structure](#repository-structure)
 - [Code Examples](#code-examples)
 - [Circuit Schematics](#circuit-schematics)
@@ -45,6 +46,12 @@ By completing this course, you'll master:
 | DIP Switch | 1 |
 | 16 Button Keypad | 1 |
 | USB Cable + Wire Bundles | 1 set |
+
+## 3D Printed Case
+
+Keep your project organized with this custom all-in-one enclosure for the HERO board, keypad, and breadboard:
+
+**[Download on Thingiverse](https://www.thingiverse.com/thing:6417016)**
 
 ## Repository Structure
 

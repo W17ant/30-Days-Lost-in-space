@@ -1,18 +1,17 @@
-/*
- * Day 21: Can you picture it?
- * Mission: Bitmap graphics on OLED
- *
- * Key Concepts:
- * - Bitmap image display
- * - PROGMEM storage
- * - Custom graphics
- *
- * Components: OLED display
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 21: BITMAP - Custom graphics on OLED           ###
+   ###   Learn PROGMEM storage and bitmap rendering         ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -20,6 +19,10 @@
 #define SCREEN_ADDRESS 0x3C
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+/* ###########################################################
+   ###   2. Bitmap Data (stored in PROGMEM)                 ###
+   ########################################################### */
 
 // Rocket bitmap 16x32 pixels
 const unsigned char PROGMEM rocketBitmap[] = {
@@ -46,6 +49,10 @@ const unsigned char PROGMEM planetBitmap[] = {
   0x7F, 0xFE, 0x3F, 0xFC, 0x1F, 0xF8, 0x07, 0xE0
 };
 
+/* ###########################################################
+   ###   3. Setup Function                                  ###
+   ########################################################### */
+
 void setup() {
   Serial.begin(9600);
 
@@ -63,6 +70,10 @@ void setup() {
   delay(1000);
 }
 
+/* ###########################################################
+   ###   4. Helper Functions                                ###
+   ########################################################### */
+
 void drawStarfield() {
   // Draw random stars
   for (int i = 0; i < 15; i++) {
@@ -76,6 +87,10 @@ void drawStarfield() {
   display.drawBitmap(100, 5, starBitmap, 8, 8, SSD1306_WHITE);
   display.drawBitmap(60, 50, starBitmap, 8, 8, SSD1306_WHITE);
 }
+
+/* ###########################################################
+   ###   5. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Scene 1: Rocket
@@ -106,3 +121,7 @@ void loop() {
   display.display();
   delay(2000);
 }
+
+/* ###########################################################
+   ###           END OF DAY 21 - BITMAP                     ###
+   ########################################################### */

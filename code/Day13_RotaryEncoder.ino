@@ -1,21 +1,28 @@
-/*
- * Day 13: HERO Security 101
- * Mission: Rotary encoder intro
- *
- * Key Concepts:
- * - digitalRead()
- * - Encoder hardware
- * - Interrupt handling
- *
- * Components: Rotary encoder, resistors, breadboard
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 13: ROTARY ENCODER - Dial input control        ###
+   ###   Learn encoder reading and rotation detection       ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
+
+/* ###########################################################
+   ###   1. Pin Definitions                                 ###
+   ########################################################### */
 
 const int ENCODER_CLK = 2;
 const int ENCODER_DT = 3;
 const int ENCODER_SW = 4;
 
+/* ###########################################################
+   ###   2. Global Variables                                ###
+   ########################################################### */
+
 volatile int encoderValue = 0;
 int lastCLKState;
+
+/* ###########################################################
+   ###   3. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -29,6 +36,10 @@ void setup() {
   Serial.println("Rotary Encoder Ready");
   Serial.println("Turn the knob or press the button");
 }
+
+/* ###########################################################
+   ###   4. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read current CLK state
@@ -53,6 +64,10 @@ void loop() {
     Serial.println("Button Pressed!");
     encoderValue = 0;
     Serial.println("Value Reset to 0");
-    delay(200); // Debounce
+    delay(200);  // Debounce
   }
 }
+
+/* ###########################################################
+   ###           END OF DAY 13 - ROTARY ENCODER             ###
+   ########################################################### */

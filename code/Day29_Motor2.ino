@@ -1,18 +1,17 @@
-/*
- * Day 29: Prepare for landing
- * Mission: Advanced motor control
- *
- * Key Concepts:
- * - Smooth acceleration/deceleration
- * - Motor sequences
- * - Display integration
- *
- * Components: DC motor, L293D driver, OLED display, button
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 29: MOTOR 2 - Advanced motor control           ###
+   ###   Smooth acceleration and landing sequences          ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,10 +20,18 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int MOTOR_EN = 9;
 const int MOTOR_IN1 = 7;
 const int MOTOR_IN2 = 8;
 const int BUTTON_PIN = 2;
+
+/* ###########################################################
+   ###   3. Motor State Machine                             ###
+   ########################################################### */
 
 int currentSpeed = 0;
 int targetSpeed = 0;
@@ -35,6 +42,10 @@ MotorState state = STOPPED;
 
 unsigned long stateStartTime = 0;
 unsigned long lastUpdate = 0;
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -52,6 +63,10 @@ void setup() {
   stopMotor();
   updateDisplay();
 }
+
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
 
 void setMotor(int speed, bool forward) {
   if (forward) {
@@ -124,6 +139,10 @@ void smoothAccelerate(int target, int rate) {
   setMotor(currentSpeed, motorDirection);
 }
 
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   // Check button press
   static bool lastButton = HIGH;
@@ -138,7 +157,7 @@ void loop() {
       state = LANDING;
       stateStartTime = millis();
     }
-    delay(50); // Debounce
+    delay(50);  // Debounce
   }
   lastButton = buttonState;
 
@@ -181,3 +200,7 @@ void loop() {
     updateDisplay();
   }
 }
+
+/* ###########################################################
+   ###           END OF DAY 29 - MOTOR 2                    ###
+   ########################################################### */

@@ -1,18 +1,17 @@
-/*
- * Day 22: Flight dashboard
- * Mission: Complete display panel
- *
- * Key Concepts:
- * - Multi-element UI design
- * - Status indicators
- * - Combining graphics and text
- *
- * Components: OLED display, potentiometer, button
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 22: DISPLAY PANEL - Flight dashboard UI        ###
+   ###   Multi-element interface with gauges and indicators ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,12 +20,24 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int THROTTLE_PIN = A0;
 const int BUTTON_PIN = 7;
+
+/* ###########################################################
+   ###   3. Global Variables                                ###
+   ########################################################### */
 
 int throttleValue = 0;
 bool systemArmed = false;
 unsigned long lastButtonPress = 0;
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -46,6 +57,10 @@ void setup() {
 
   delay(1500);
 }
+
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
 
 void drawGauge(int x, int y, int value, const char* label) {
   // Draw gauge outline
@@ -69,6 +84,10 @@ void drawStatusIndicator(int x, int y, bool active, const char* label) {
   display.setCursor(x + 10, y - 3);
   display.print(label);
 }
+
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read inputs
@@ -111,3 +130,7 @@ void loop() {
   display.display();
   delay(50);
 }
+
+/* ###########################################################
+   ###           END OF DAY 22 - DISPLAY PANEL              ###
+   ########################################################### */

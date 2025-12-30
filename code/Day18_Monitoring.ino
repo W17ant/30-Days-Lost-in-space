@@ -1,18 +1,17 @@
-/*
- * Day 18: Where's my crew?
- * Mission: System monitoring dashboard
- *
- * Key Concepts:
- * - Multi-sensor integration
- * - Real-time display updates
- * - Status monitoring
- *
- * Components: OLED display, photoresistor, potentiometer
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 18: MONITORING - System status dashboard       ###
+   ###   Multi-sensor integration with real-time display    ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,11 +20,23 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int LIGHT_SENSOR_PIN = A0;
 const int POWER_SENSOR_PIN = A1;
 
+/* ###########################################################
+   ###   3. Global Variables                                ###
+   ########################################################### */
+
 int lightLevel = 0;
 int powerLevel = 0;
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -45,6 +56,10 @@ void setup() {
   delay(1000);
 }
 
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
+
 void drawProgressBar(int x, int y, int width, int height, int value) {
   display.drawRect(x, y, width, height, SSD1306_WHITE);
   int fillWidth = map(value, 0, 100, 0, width - 2);
@@ -56,6 +71,10 @@ String getStatus(int value) {
   if (value > 25) return "NORM";
   return "LOW";
 }
+
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read sensors
@@ -99,3 +118,7 @@ void loop() {
 
   delay(250);
 }
+
+/* ###########################################################
+   ###           END OF DAY 18 - MONITORING                 ###
+   ########################################################### */

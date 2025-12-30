@@ -1,18 +1,17 @@
-/*
- * Day 19: Incoming transmission
- * Mission: Data visualization on OLED
- *
- * Key Concepts:
- * - Graphical data display
- * - Line graphs
- * - Real-time plotting
- *
- * Components: OLED display, photoresistor
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 19: DATA VIZ - Real-time signal graphing       ###
+   ###   Learn line graphs and data plotting on OLED        ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,15 +20,27 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Graph Configuration                             ###
+   ########################################################### */
+
 const int SENSOR_PIN = A0;
 const int GRAPH_WIDTH = 100;
 const int GRAPH_HEIGHT = 40;
 const int GRAPH_X = 20;
 const int GRAPH_Y = 20;
 
+/* ###########################################################
+   ###   3. Global Variables                                ###
+   ########################################################### */
+
 int dataPoints[100];
 int dataIndex = 0;
 int sampleCount = 0;
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -53,6 +64,10 @@ void setup() {
 
   delay(1000);
 }
+
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
 
 void drawGraph() {
   // Draw axes
@@ -80,6 +95,10 @@ void drawGraph() {
   display.setCursor(0, GRAPH_Y + GRAPH_HEIGHT - 6);
   display.print(F("0"));
 }
+
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read and store sensor value
@@ -112,3 +131,7 @@ void loop() {
 
   delay(100);
 }
+
+/* ###########################################################
+   ###           END OF DAY 19 - DATA VIZ                   ###
+   ########################################################### */

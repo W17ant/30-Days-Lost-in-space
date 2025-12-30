@@ -1,17 +1,15 @@
-/*
- * Day 14: Advanced security panel
- * Mission: Keypad security system
- *
- * Key Concepts:
- * - Input processing with array logic
- * - Password/PIN entry
- *
- * Components: 16-button keypad, resistors
- *
- * Note: Requires Keypad library - install via Library Manager
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 14: KEYPAD - Security PIN entry system         ###
+   ###   Learn matrix keypad scanning and password logic    ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Keypad.h>
+
+/* ###########################################################
+   ###   1. Keypad Configuration                            ###
+   ########################################################### */
 
 const byte ROWS = 4;
 const byte COLS = 4;
@@ -28,14 +26,26 @@ byte colPins[COLS] = {5, 4, 3, 2};
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
+/* ###########################################################
+   ###   2. Security Settings                               ###
+   ########################################################### */
+
 const String SECRET_CODE = "1234";
 String enteredCode = "";
+
+/* ###########################################################
+   ###   3. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
   Serial.println("=== SECURITY PANEL ===");
   Serial.println("Enter 4-digit code:");
 }
+
+/* ###########################################################
+   ###   4. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   char key = keypad.getKey();
@@ -61,3 +71,7 @@ void loop() {
     }
   }
 }
+
+/* ###########################################################
+   ###           END OF DAY 14 - KEYPAD                     ###
+   ########################################################### */

@@ -1,13 +1,13 @@
-/*
- * Day 11: Starting your control panel
- * Mission: DIP switch input
- *
- * Key Concepts:
- * - digitalRead()
- * - Conditional logic
- *
- * Components: DIP switch (4 positions), breadboard, jumper wires
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 11: DIP SWITCH - Control panel inputs          ###
+   ###   Learn digitalRead() with pull-up resistors         ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
+
+/* ###########################################################
+   ###   1. Pin Definitions                                 ###
+   ########################################################### */
 
 const int SWITCH1_PIN = 2;
 const int SWITCH2_PIN = 3;
@@ -18,6 +18,10 @@ const int LED1_PIN = 9;
 const int LED2_PIN = 10;
 const int LED3_PIN = 11;
 const int LED4_PIN = 12;
+
+/* ###########################################################
+   ###   2. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -34,6 +38,10 @@ void setup() {
   pinMode(LED3_PIN, OUTPUT);
   pinMode(LED4_PIN, OUTPUT);
 }
+
+/* ###########################################################
+   ###   3. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read switch states (LOW = ON due to pull-up)
@@ -57,3 +65,7 @@ void loop() {
 
   delay(100);
 }
+
+/* ###########################################################
+   ###           END OF DAY 11 - DIP SWITCH                 ###
+   ########################################################### */

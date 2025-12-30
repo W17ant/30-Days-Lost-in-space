@@ -1,18 +1,17 @@
-/*
- * Day 24: Autopilot online
- * Mission: Automated control system
- *
- * Key Concepts:
- * - Feedback loops
- * - Sensor-based automation
- * - Target tracking
- *
- * Components: OLED display, photoresistor, LEDs, potentiometer
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 24: AUTOPILOT - Automated control system       ###
+   ###   Feedback loops and proportional control            ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,19 +20,29 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int SENSOR_PIN = A0;
 const int SETPOINT_PIN = A1;
 const int OUTPUT_PIN = 9;
+
+/* ###########################################################
+   ###   3. Control System Variables                        ###
+   ########################################################### */
 
 int sensorValue = 0;
 int setpointValue = 0;
 int outputValue = 0;
 int error = 0;
 
-// Simple P controller
-const float Kp = 0.5;
-
+const float Kp = 0.5;  // Proportional gain
 bool autopilotEnabled = true;
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -55,11 +64,19 @@ void setup() {
   delay(1500);
 }
 
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
+
 void drawBar(int x, int y, int width, int height, int value, int maxVal) {
   display.drawRect(x, y, width, height, SSD1306_WHITE);
   int fillWidth = map(constrain(value, 0, maxVal), 0, maxVal, 0, width - 2);
   display.fillRect(x + 1, y + 1, fillWidth, height - 2, SSD1306_WHITE);
 }
+
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read inputs
@@ -137,3 +154,7 @@ void loop() {
 
   delay(100);
 }
+
+/* ###########################################################
+   ###           END OF DAY 24 - AUTOPILOT                  ###
+   ########################################################### */

@@ -1,19 +1,18 @@
-/*
- * Day 30: Mission complete
- * Mission: Complete integrated system
- *
- * Key Concepts:
- * - System integration
- * - All components working together
- * - Final mission demonstration
- *
- * Components: OLED display, LEDs, buzzer, motor, sensors, keypad
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 30: COMPLETE - Full integrated mission system  ###
+   ###   All components working together for final mission  ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Keypad.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -22,7 +21,10 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-// Pin definitions
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int MOTOR_EN = 9;
 const int MOTOR_IN1 = 7;
 const int MOTOR_IN2 = 8;
@@ -31,7 +33,10 @@ const int RED_LED = 10;
 const int GREEN_LED = 11;
 const int SENSOR_PIN = A0;
 
-// Keypad setup
+/* ###########################################################
+   ###   3. Keypad Configuration                            ###
+   ########################################################### */
+
 const byte ROWS = 4;
 const byte COLS = 4;
 char keys[ROWS][COLS] = {
@@ -44,7 +49,10 @@ byte rowPins[ROWS] = {A1, A2, A3, 5};
 byte colPins[COLS] = {4, 3, 2, 12};
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
-// System states
+/* ###########################################################
+   ###   4. System State Machine                            ###
+   ########################################################### */
+
 enum SystemState { BOOT, IDLE, ARMED, COUNTDOWN, LAUNCH, FLIGHT, LANDING, COMPLETE };
 SystemState state = BOOT;
 
@@ -54,6 +62,10 @@ String enteredCode = "";
 int countdown = 10;
 unsigned long stateTimer = 0;
 int motorSpeed = 0;
+
+/* ###########################################################
+   ###   5. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -73,6 +85,10 @@ void setup() {
   state = BOOT;
   stateTimer = millis();
 }
+
+/* ###########################################################
+   ###   6. Helper Functions                                ###
+   ########################################################### */
 
 void playTone(int freq, int duration) {
   tone(BUZZER_PIN, freq, duration);
@@ -187,6 +203,10 @@ void updateDisplay() {
   display.display();
 }
 
+/* ###########################################################
+   ###   7. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   char key = keypad.getKey();
 
@@ -294,3 +314,7 @@ void loop() {
 
   updateDisplay();
 }
+
+/* ###########################################################
+   ###           END OF DAY 30 - COMPLETE                   ###
+   ########################################################### */

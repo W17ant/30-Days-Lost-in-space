@@ -1,18 +1,17 @@
-/*
- * Day 17: Top secret decoder
- * Mission: Message encryption/decryption
- *
- * Key Concepts:
- * - Character manipulation
- * - Caesar cipher implementation
- * - String processing
- *
- * Components: OLED display, rotary encoder
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 17: ENCRYPTION - Caesar cipher decoder         ###
+   ###   Learn character manipulation and string processing ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,15 +20,27 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int ENCODER_CLK = 2;
 const int ENCODER_DT = 3;
 const int ENCODER_SW = 4;
+
+/* ###########################################################
+   ###   3. Global Variables                                ###
+   ########################################################### */
 
 volatile int shiftValue = 0;
 int lastCLKState;
 
 String secretMessage = "KHUR VDYHV WKH GDB";
 String decodedMessage = "";
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -55,6 +66,10 @@ void setup() {
   delay(1000);
   updateDisplay();
 }
+
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
 
 String caesarCipher(String text, int shift) {
   String result = "";
@@ -94,6 +109,10 @@ void updateDisplay() {
   Serial.println(decodedMessage);
 }
 
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   int currentCLKState = digitalRead(ENCODER_CLK);
 
@@ -114,3 +133,7 @@ void loop() {
     delay(200);
   }
 }
+
+/* ###########################################################
+   ###           END OF DAY 17 - ENCRYPTION                 ###
+   ########################################################### */

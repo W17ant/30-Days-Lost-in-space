@@ -1,20 +1,17 @@
-/*
- * Day 16: Hello OLED
- * Mission: OLED display introduction
- *
- * Key Concepts:
- * - I2C communication
- * - OLED display basics
- * - Graphics library usage
- *
- * Components: 128x64 OLED display (SSD1306), jumper wires
- *
- * Note: Requires Adafruit_SSD1306 and Adafruit_GFX libraries
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 16: OLED - Display introduction with I2C       ###
+   ###   Learn graphics library and text rendering          ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -22,6 +19,10 @@
 #define SCREEN_ADDRESS 0x3C
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+/* ###########################################################
+   ###   2. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -48,6 +49,10 @@ void setup() {
   delay(2000);
 }
 
+/* ###########################################################
+   ###   3. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   // Display cycling text demo
   display.clearDisplay();
@@ -65,3 +70,7 @@ void loop() {
 
   delay(1000);
 }
+
+/* ###########################################################
+   ###           END OF DAY 16 - OLED                       ###
+   ########################################################### */

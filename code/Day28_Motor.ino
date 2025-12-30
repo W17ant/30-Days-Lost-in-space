@@ -1,26 +1,33 @@
-/*
- * Day 28: Blast off!
- * Mission: DC motor control basics
- *
- * Key Concepts:
- * - PWM motor speed control
- * - H-bridge direction control
- * - analogWrite() for speed
- *
- * Components: DC motor, L293D motor driver, potentiometer
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 28: MOTOR - DC motor control basics            ###
+   ###   PWM speed control with H-bridge direction          ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
-const int MOTOR_EN = 9;   // Enable pin (PWM)
-const int MOTOR_IN1 = 7;  // Direction pin 1
-const int MOTOR_IN2 = 8;  // Direction pin 2
+/* ###########################################################
+   ###   1. Pin Definitions                                 ###
+   ########################################################### */
+
+const int MOTOR_EN = 9;    // Enable pin (PWM)
+const int MOTOR_IN1 = 7;   // Direction pin 1
+const int MOTOR_IN2 = 8;   // Direction pin 2
 
 const int SPEED_PIN = A0;
 const int DIR_BUTTON = 2;
 
+/* ###########################################################
+   ###   2. Global Variables                                ###
+   ########################################################### */
+
 int motorSpeed = 0;
-bool motorDirection = true; // true = forward, false = reverse
+bool motorDirection = true;  // true = forward, false = reverse
 bool lastButtonState = HIGH;
 unsigned long lastDebounce = 0;
+
+/* ###########################################################
+   ###   3. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -38,6 +45,10 @@ void setup() {
   Serial.println(F("Press button for direction"));
 }
 
+/* ###########################################################
+   ###   4. Helper Functions                                ###
+   ########################################################### */
+
 void setMotorDirection(bool forward) {
   if (forward) {
     digitalWrite(MOTOR_IN1, HIGH);
@@ -53,6 +64,10 @@ void stopMotor() {
   digitalWrite(MOTOR_IN2, LOW);
   analogWrite(MOTOR_EN, 0);
 }
+
+/* ###########################################################
+   ###   5. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   // Read speed from potentiometer
@@ -70,7 +85,7 @@ void loop() {
   lastButtonState = buttonState;
 
   // Apply motor settings
-  if (motorSpeed > 10) { // Dead zone for low values
+  if (motorSpeed > 10) {  // Dead zone for low values
     setMotorDirection(motorDirection);
     analogWrite(MOTOR_EN, motorSpeed);
   } else {
@@ -87,3 +102,7 @@ void loop() {
 
   delay(100);
 }
+
+/* ###########################################################
+   ###           END OF DAY 28 - MOTOR                      ###
+   ########################################################### */

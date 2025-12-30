@@ -1,18 +1,17 @@
-/*
- * Day 26: Fasten your seatbelt
- * Mission: OLED animation basics
- *
- * Key Concepts:
- * - Frame-based animation
- * - Sprite movement
- * - Timing control
- *
- * Components: OLED display
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 26: ANIMATION - Frame-based sprite movement    ###
+   ###   Learn animation timing and starfield effects       ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,13 +20,20 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Sprite Data                                     ###
+   ########################################################### */
+
 // Rocket sprite 8x16
 const unsigned char PROGMEM rocketSprite[] = {
   0x18, 0x3C, 0x7E, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
   0xFF, 0xFF, 0x7E, 0x3C, 0x24, 0x42, 0x81, 0x00
 };
 
-// Star positions
+/* ###########################################################
+   ###   3. Star System                                     ###
+   ########################################################### */
+
 struct Star {
   int x;
   int y;
@@ -36,15 +42,21 @@ struct Star {
 
 Star stars[20];
 
-// Rocket position
+/* ###########################################################
+   ###   4. Animation Variables                             ###
+   ########################################################### */
+
 float rocketX = 60;
 float rocketY = 24;
 float rocketVelX = 0;
 float rocketVelY = 0;
 
-// Animation timing
 unsigned long lastFrame = 0;
-const int FRAME_DELAY = 33; // ~30 FPS
+const int FRAME_DELAY = 33;  // ~30 FPS
+
+/* ###########################################################
+   ###   5. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -64,6 +76,10 @@ void setup() {
   display.clearDisplay();
   display.setTextColor(SSD1306_WHITE);
 }
+
+/* ###########################################################
+   ###   6. Helper Functions                                ###
+   ########################################################### */
 
 void updateStars() {
   for (int i = 0; i < 20; i++) {
@@ -109,6 +125,10 @@ void drawRocket() {
   }
 }
 
+/* ###########################################################
+   ###   7. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   if (millis() - lastFrame < FRAME_DELAY) {
     return;
@@ -140,3 +160,7 @@ void loop() {
 
   display.display();
 }
+
+/* ###########################################################
+   ###           END OF DAY 26 - ANIMATION                  ###
+   ########################################################### */

@@ -1,17 +1,20 @@
-/*
- * Day 12: Can you hear us?
- * Mission: Buzzer sound control
- *
- * Key Concepts:
- * - tone() function
- * - Timing
- *
- * Components: Passive buzzer, resistor
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 12: BUZZER - Audio feedback with tone()        ###
+   ###   Learn frequency control and musical notes          ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
+
+/* ###########################################################
+   ###   1. Pin Definitions                                 ###
+   ########################################################### */
 
 const int BUZZER_PIN = 9;
 
-// Note frequencies
+/* ###########################################################
+   ###   2. Note Frequency Definitions                      ###
+   ########################################################### */
+
 #define NOTE_C4 262
 #define NOTE_D4 294
 #define NOTE_E4 330
@@ -21,11 +24,19 @@ const int BUZZER_PIN = 9;
 #define NOTE_B4 494
 #define NOTE_C5 523
 
+/* ###########################################################
+   ###   3. Setup Function                                  ###
+   ########################################################### */
+
 void setup() {
   pinMode(BUZZER_PIN, OUTPUT);
   Serial.begin(9600);
   Serial.println("Buzzer Test Starting...");
 }
+
+/* ###########################################################
+   ###   4. Helper Functions                                ###
+   ########################################################### */
 
 void playTone(int frequency, int duration) {
   tone(BUZZER_PIN, frequency, duration);
@@ -46,6 +57,10 @@ void playAlertSound() {
   }
 }
 
+/* ###########################################################
+   ###   5. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   Serial.println("Playing startup sound...");
   playStartupSound();
@@ -55,3 +70,7 @@ void loop() {
   playAlertSound();
   delay(2000);
 }
+
+/* ###########################################################
+   ###           END OF DAY 12 - BUZZER                     ###
+   ########################################################### */

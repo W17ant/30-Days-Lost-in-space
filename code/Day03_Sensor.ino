@@ -1,24 +1,35 @@
-/*
- * Day 3: I'm worried about your battery levels
- * Mission: Read analog sensors
- *
- * Key Concepts:
- * - analogRead()
- * - Power monitoring
- * - Serial communication
- *
- * Components: Photoresistor, 10kΩ resistor
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 03: SENSOR - Photoresistor light detection     ###
+   ###   Learn analogRead() and serial communication        ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
+
+/* ###########################################################
+   ###   1. Pin Definitions                                 ###
+   ########################################################### */
 
 const int PHOTORESISTOR_PIN = A0;
+
+/* ###########################################################
+   ###   2. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
   pinMode(PHOTORESISTOR_PIN, INPUT);
 }
 
+/* ###########################################################
+   ###   3. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   int sensorValue = analogRead(PHOTORESISTOR_PIN);
   Serial.println(sensorValue);
   delay(100);
 }
+
+/* ###########################################################
+   ###           END OF DAY 03 - SENSOR                     ###
+   ########################################################### */

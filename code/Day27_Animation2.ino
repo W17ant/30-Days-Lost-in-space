@@ -1,18 +1,17 @@
-/*
- * Day 27: It's all in the details
- * Mission: Advanced animation techniques
- *
- * Key Concepts:
- * - Particle systems
- * - Physics simulation
- * - Interactive animation
- *
- * Components: OLED display, potentiometer
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 27: ANIMATION 2 - Particle system physics      ###
+   ###   Advanced animation with interactive emitter        ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,9 +20,16 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int CONTROL_PIN = A0;
 
-// Particle system
+/* ###########################################################
+   ###   3. Particle System                                 ###
+   ########################################################### */
+
 const int MAX_PARTICLES = 30;
 
 struct Particle {
@@ -35,12 +41,19 @@ struct Particle {
 
 Particle particles[MAX_PARTICLES];
 
-// Emitter position
 int emitterX = 64;
 int emitterY = 50;
 
+/* ###########################################################
+   ###   4. Animation Timing                                ###
+   ########################################################### */
+
 unsigned long lastFrame = 0;
 const int FRAME_DELAY = 33;
+
+/* ###########################################################
+   ###   5. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -55,6 +68,10 @@ void setup() {
     particles[i].active = false;
   }
 }
+
+/* ###########################################################
+   ###   6. Helper Functions                                ###
+   ########################################################### */
 
 void spawnParticle() {
   for (int i = 0; i < MAX_PARTICLES; i++) {
@@ -76,7 +93,7 @@ void updateParticles() {
       // Apply physics
       particles[i].x += particles[i].vx;
       particles[i].y += particles[i].vy;
-      particles[i].vy += 0.2; // Gravity
+      particles[i].vy += 0.2;  // Gravity
 
       particles[i].life--;
 
@@ -113,6 +130,10 @@ int countActiveParticles() {
   return count;
 }
 
+/* ###########################################################
+   ###   7. Main Loop                                       ###
+   ########################################################### */
+
 void loop() {
   if (millis() - lastFrame < FRAME_DELAY) {
     return;
@@ -123,7 +144,7 @@ void loop() {
   emitterX = map(analogRead(CONTROL_PIN), 0, 1023, 10, SCREEN_WIDTH - 10);
 
   // Spawn new particles
-  if (random(100) < 50) { // 50% chance each frame
+  if (random(100) < 50) {  // 50% chance each frame
     spawnParticle();
   }
 
@@ -157,3 +178,7 @@ void loop() {
 
   display.display();
 }
+
+/* ###########################################################
+   ###           END OF DAY 27 - ANIMATION 2                ###
+   ########################################################### */

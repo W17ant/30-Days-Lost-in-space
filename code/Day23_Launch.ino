@@ -1,18 +1,17 @@
-/*
- * Day 23: Flight sequence
- * Mission: Launch countdown system
- *
- * Key Concepts:
- * - State machines
- * - Countdown sequences
- * - Multi-component coordination
- *
- * Components: OLED display, LEDs, buzzer, button
- */
+/* ###########################################################
+   ###   30 DAYS LOST IN SPACE - INVENTR.IO                 ###
+   ###   DAY 23: LAUNCH - Countdown sequence system         ###
+   ###   State machines and multi-component coordination    ###
+   ###   Last Updated: 30-12-2024                           ###
+   ########################################################### */
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+/* ###########################################################
+   ###   1. Display Configuration                           ###
+   ########################################################### */
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -21,11 +20,19 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+/* ###########################################################
+   ###   2. Pin Definitions                                 ###
+   ########################################################### */
+
 const int BUTTON_PIN = 7;
 const int BUZZER_PIN = 9;
 const int RED_LED = 10;
 const int YELLOW_LED = 11;
 const int GREEN_LED = 12;
+
+/* ###########################################################
+   ###   3. State Machine                                   ###
+   ########################################################### */
 
 enum State { IDLE, COUNTDOWN, LAUNCH, ABORT };
 State currentState = IDLE;
@@ -33,6 +40,10 @@ State currentState = IDLE;
 int countdownValue = 10;
 unsigned long lastTick = 0;
 unsigned long launchTime = 0;
+
+/* ###########################################################
+   ###   4. Setup Function                                  ###
+   ########################################################### */
 
 void setup() {
   Serial.begin(9600);
@@ -50,6 +61,10 @@ void setup() {
 
   updateDisplay();
 }
+
+/* ###########################################################
+   ###   5. Helper Functions                                ###
+   ########################################################### */
 
 void updateDisplay() {
   display.clearDisplay();
@@ -109,6 +124,10 @@ void setLEDs(bool red, bool yellow, bool green) {
   digitalWrite(YELLOW_LED, yellow);
   digitalWrite(GREEN_LED, green);
 }
+
+/* ###########################################################
+   ###   6. Main Loop                                       ###
+   ########################################################### */
 
 void loop() {
   bool buttonPressed = digitalRead(BUTTON_PIN) == LOW;
@@ -170,3 +189,7 @@ void loop() {
   updateDisplay();
   delay(50);
 }
+
+/* ###########################################################
+   ###           END OF DAY 23 - LAUNCH                     ###
+   ########################################################### */
